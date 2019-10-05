@@ -27,6 +27,10 @@ on init
     chown shell system /proc/mtk_battery_cmd/current_cmd
     chown shell system /proc/mtk_battery_cmd/discharging_cmd
 
+    # LibShims support
+    export LD_SHIM_LIBS "/system/lib/libmedia_jni.so|vendor/lib/libshim_media.so:/system/lib64/libmedia_jni.so|vendor/lib64/libshim_media.so:/system/lib/hw/audio.primary.mt8163.so|system/vendor/lib/libshim_audio.so:/system/lib64/hw/audio.primary.mt8163.so|system/vendor/lib64/libshim_audio.so"
+    LD_PRELOAD "system/lib/libmtk_symbols.so:system/lib64/libmtk_symbols.so"
+
 # Temp Backward compatibility
     symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/boot /dev/bootimg
     symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/recovery /dev/recovery
